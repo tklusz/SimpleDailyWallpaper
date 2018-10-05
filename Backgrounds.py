@@ -1,4 +1,4 @@
-import pwd, os, subprocess, datetime, re;
+import pwd, os, subprocess, datetime, re, calendar;
 
 global home_directory
 global photo_directory
@@ -25,10 +25,15 @@ def choosePic():
     all_pics = os.listdir(photo_directory)
     # Gets today's day number e.g. 200 (July 19th)
     today = int(datetime.datetime.now().strftime('%j'))
+    # Gets today's year number e.g. 2018
+    current_year = int(datetime.datetime.now().strftime('%Y'))
     # Creating a new list to store pics that are on or before today.
     filtered_pics = []
     # Current_max and pic_to_use are used in the for loop.
     current_max = -367
+    # If current year is leap year it has 368 days.
+    if calendar.isleap(current_year):
+        current_max = -368
     pic_to_use = ""
 
     # Looping through every pic in the directory.
