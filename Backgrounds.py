@@ -3,9 +3,15 @@ import pwd, os, subprocess, datetime, re;
 global home_directory
 global photo_directory
 
-# Directory where this script is.
+# User's home directory.
 home_directory = pwd.getpwuid(os.getuid()).pw_dir
 # ~/Pictures/Wallpapers directory. This can be changed to any directory.
+
+#
+# If you want to change your wallpaper directory to a specific directory, change the following line.
+# Also, you may remove the lines "global home_directory" and "home_directory = pwd..." above if you change it.
+# Example : photo_directory = "home/myname/Pictures/Wallpapers/Daily"
+#
 photo_directory = home_directory+"/Pictures/Wallpapers/"
 
 def choosePic():
@@ -40,11 +46,15 @@ def choosePic():
         if  date_calc <=0 and date_calc > current_max:
             current_max = date_calc
             pic_to_use = pic
-            print(pic_to_use)
 
-    # After we loop through all of the pics,
-    # The date_calc closest to 0 (aka pic_to_use) will be used as our background.
-    setWallpaper(pic_to_use)
+    # Note that at the beginning of the year until the first number (e.g. 5.png), pic_to_use will be -367.
+    # This is because no pics will make date_calc <=0.
+    # As a result, on a new year, we don't change the background
+    # until we reach the first number (e.g. 5.png).
+    if(pic_to_use != -367)
+        # After we loop through all of the pics,
+        # The date_calc closest to 0 (aka pic_to_use) will be used as our background.
+        setWallpaper(pic_to_use)
 
 def setWallpaper(photoname):
     """
@@ -60,7 +70,9 @@ def setWallpaper(photoname):
     long_file = "'file://" + photo_directory + photoname + "'"
 
     # This will call the gsettings command to change the background to the new pic.
-    # If you are using a different desktop enviornment, you can change this command.
+    #
+    # If you are using a different desktop enviornment, you can change the following command:
+    #
     subprocess.call(["gsettings", "set", "org.gnome.desktop.background", "picture-uri", long_file])
 
 
