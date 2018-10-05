@@ -14,8 +14,8 @@ home/(username)/Pictures/Wallpapers
 
 ![](/images/Example.png)
 
-Add as many wallpapers to your new directory as you want, up to a maximum of 1 per day. There is only one requirement:
-Each wallpaper in the directory must be named a number equal to the day of the year when it should start being  your wallpaper. See the screenshot above for examples.
+Add as many wallpapers to your new directory as you want, up to a maximum of 1 per day. There is only one requirement.
+Here's how it works:
 
 > If you want a wallpaper to start showing on the 4th of July, you would name that wallpaper "185", and keep the extension (jpeg, png, etc). That wallpaper would continue being shown until you reach a different wallpaper with a closer number (e.g. 186 on July 5th).
 
