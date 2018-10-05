@@ -20,21 +20,23 @@ def choosePic():
          it will use 180.jpeg.
     It will only use a number before or on today's number.
     """
-
+    
+    # Creating a new list to store pics that are on or before today.
+    filtered_pics = []
     # Retrieves all pics in photo directory.
     all_pics = os.listdir(photo_directory)
     # Gets today's day number e.g. 200 (July 19th)
     today = int(datetime.datetime.now().strftime('%j'))
     # Gets today's year number e.g. 2018
     current_year = int(datetime.datetime.now().strftime('%Y'))
-    # Creating a new list to store pics that are on or before today.
-    filtered_pics = []
-    # Current_max and pic_to_use are used in the for loop.
-    current_max = -367
-    # If current year is leap year it has 368 days so, in order to mantain the same wallpaper as non leap year
-    # we have to substract one day from the 29th of februry (60 day of the year) towards.
+    
+    # If current year is leap year it has 366 days so, in order to mantain the same wallpaper as non leap year
+    # we have to substract one day from the 29th of februry (60 day of the year) onwards.
     if calendar.isleap(current_year) and today > 60:
         today = today - 1
+    
+    # Current_max and pic_to_use are used in the for loop.
+    current_max = -367
     pic_to_use = ""
 
     # Looping through every pic in the directory.
@@ -52,11 +54,11 @@ def choosePic():
             current_max = date_calc
             pic_to_use = pic
 
-    # Note that at the beginning of the year until the first number (e.g. 5.png), pic_to_use will be -367.
+    # Note that at the beginning of the year until the first number (e.g. 5.png), current_max will be -367.
     # This is because no pics will make date_calc <=0.
     # As a result, on a new year, we don't change the background
     # until we reach the first number (e.g. 5.png).
-    if pic_to_use != -367:
+    if current_max != -367:
         # After we loop through all of the pics,
         # The date_calc closest to 0 (aka pic_to_use) will be used as our background.
         setWallpaper(pic_to_use)
