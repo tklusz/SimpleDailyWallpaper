@@ -21,6 +21,9 @@ Here's how it works:
 
 To calculate your day numbers, check out [this website.](https://www.epochconverter.com/days/2018)
 
+#### Leap Years.
+This script will ignore the 29th of February (every 4 years), and treat it as a second February 28th (day #60). This is to preserve day numbers staying the same throughout every year. As a result, it isn't possible to have a unique wallpaper for Februrary 29th on leap years. (e.g. Halloween will always be day #304, even on a leap year when it is technically day #305.)
+
 ### Adding this script to your startup.
 In order for this script to change your wallpaper daily, it is recomended to add a custom command to your startup:
 
