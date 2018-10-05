@@ -1,4 +1,5 @@
 import pwd, os, subprocess, datetime, re;
+from calendar import isleap
 
 global home_directory
 global photo_directory
@@ -25,10 +26,17 @@ def choosePic():
     all_pics = os.listdir(photo_directory)
     # Gets today's day number e.g. 200 (July 19th)
     today = int(datetime.datetime.now().strftime('%j'))
+    # Get the year. This is to check whether the current year is a leap year
+    year = int(datetime.datetime.today().year)
+    
     # Creating a new list to store pics that are on or before today.
     filtered_pics = []
     # Current_max and pic_to_use are used in the for loop.
-    current_max = -367
+    # Change the value of current max depending whether the current year is a leap year
+    if (isleap(year)):
+        current_max = -368
+    else:
+        current_max = -367
     pic_to_use = ""
 
     # Looping through every pic in the directory.
