@@ -1,4 +1,4 @@
-import pwd, os, subprocess, datetime, re;
+import pwd, os, subprocess, datetime, re, calendar;
 
 global home_directory
 global photo_directory
@@ -25,10 +25,16 @@ def choosePic():
     all_pics = os.listdir(photo_directory)
     # Gets today's day number e.g. 200 (July 19th)
     today = int(datetime.datetime.now().strftime('%j'))
+    # Gets today's year number e.g. 2018
+    current_year = int(datetime.datetime.now().strftime('%Y'))
     # Creating a new list to store pics that are on or before today.
     filtered_pics = []
     # Current_max and pic_to_use are used in the for loop.
     current_max = -367
+    # If current year is leap year it has 368 days so, in order to mantain the same wallpaper as non leap year
+    # we have to substract one day from the 29th of februry (60 day of the year) towards.
+    if calendar.isleap(current_year) and today > 60:
+        today = today - 1
     pic_to_use = ""
 
     # Looping through every pic in the directory.
