@@ -31,9 +31,10 @@ def choosePic():
     filtered_pics = []
     # Current_max and pic_to_use are used in the for loop.
     current_max = -367
-    # If current year is leap year it has 368 days.
-    if calendar.isleap(current_year):
-        current_max = -368
+    # If current year is leap year it has 368 days so, in order to mantain the same wallpaper as non leap year
+    # we have to substract one day from the 29th of februry (60 day of the year) towards.
+    if calendar.isleap(current_year) and today > 60:
+        today = today - 1
     pic_to_use = ""
 
     # Looping through every pic in the directory.
