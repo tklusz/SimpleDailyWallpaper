@@ -55,7 +55,7 @@ def choosePic():
     # This is because no pics will make date_calc <=0.
     # As a result, on a new year, we don't change the background
     # until we reach the first number (e.g. 5.png).
-    if(pic_to_use != -367):
+    if pic_to_use != -367:
         # After we loop through all of the pics,
         # The date_calc closest to 0 (aka pic_to_use) will be used as our background.
         setWallpaper(pic_to_use)
