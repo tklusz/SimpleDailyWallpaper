@@ -5,9 +5,8 @@ global photo_directory
 
 # User's home directory.
 home_directory = pwd.getpwuid(os.getuid()).pw_dir
-# ~/Pictures/Wallpapers directory. This can be changed to any directory.
 
-#
+# 
 # If you want to change your wallpaper directory to a specific directory, change the following line.
 # Also, you may remove the lines "global home_directory" and "home_directory = pwd..." above if you change it.
 # Example : photo_directory = "home/myname/Pictures/Wallpapers/Daily"
