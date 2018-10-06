@@ -1,6 +1,5 @@
-# Simple-Daily-Background
-A Python script that allows for a unique background each day of the year. 
-Easily modifiable. Requires gsettings.
+# Simple-Daily-Wallpaper
+A Python script that allows you to choose your own background each day of the year.
 
 ## Getting started
 ### Creating your Wallpaper directory.
