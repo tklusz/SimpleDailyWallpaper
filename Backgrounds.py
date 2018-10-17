@@ -66,7 +66,7 @@ def choosePic():
 def setWallpaper(photoname):
     """
     This sets the wallpaper given the relative path of the file.
-    Note that this requires gnome. It will also work with ElementaryOS.
+    Note that this requires gsettings (see README.md).
 
     input: photoname. This is the entire photo name that the background will be changed to.
            e.g. 129.png
