@@ -44,7 +44,7 @@ This script should also be compatible with the following:
  - Most Ubuntu derivatives (such as Linux Mint) 
  - Manjaro GNOME
 
-If you would like to use this script, but find that it isn't compatible weith your system, please provide an alternative command you use to change your wallpaper on this issue: [#4](https://github.com/tklusz/Simple-Daily-Wallpaper/issues/4)
+If you would like to use this script, but find that it isn't compatible with your system, please provide an alternative command you use to change your wallpaper on this issue: [#4](https://github.com/tklusz/Simple-Daily-Wallpaper/issues/4)
 
 ### Modification
 The Python script is well commented and easily editable. For example, if you want to change the Wallpaper directory to a different one, only 1 line needs to be changed.
