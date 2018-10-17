@@ -3,7 +3,7 @@ A Python script that allows you to choose your own background each day of the ye
 
 ## Getting started
 ### Creating your Wallpaper directory.
-To get started, create a new directory for your wallpapers:
+To get started, create the following directory for your wallpapers:
 
 ```
 home/(username)/Pictures/Wallpapers
@@ -13,10 +13,9 @@ home/(username)/Pictures/Wallpapers
 
 ![](/images/Example.png)
 
-Add as many wallpapers to your new directory as you want, up to a maximum of 1 per day. There is only one requirement.
-Here's how it works:
+Add as many wallpapers to the directory as you want, up to a maximum of 1 per day, and name the pictures in the following way:
 
-> If you want a wallpaper to start showing on the 4th of July, you would name that wallpaper "185", and keep the extension (jpeg, png, etc). That wallpaper would continue being shown until you reach a different wallpaper with a closer number (e.g. 186 on July 5th).
+> If you want a wallpaper to start showing on the 4th of July, you would name that wallpaper "185", and keep the extension (jpeg, png, etc). That wallpaper would continue being shown until you reach another day number you have setup. (e.g. 335.jpg on December 1st).
 
 To calculate your day numbers, check out [this website.](https://www.epochconverter.com/days/2018)
 
@@ -51,4 +50,7 @@ This script should now run daily at noon.
 The Python script is well commented and easily editable. For example, If you want to change the Wallpaper directory, only 1 line needs to be changed in the script.
 
 ### Compatability
-As of now, this script only works with gsettings. If you would like this script to work on a distribution without gsettings, please provide an alternative command you use to change your wallpaper on this issue: [#4](https://github.com/tklusz/Simple-Daily-Wallpaper/issues/4)
+As of now, this script requires gsettings to be installed on your distro. This is confirmed to work with:
+ - Elementary OS (Juno and Loki)
+ - Ubuntu 
+If you would like this script to work on a distribution without gsettings, please provide an alternative command you use to change your wallpaper on this issue: [#4](https://github.com/tklusz/Simple-Daily-Wallpaper/issues/4)
