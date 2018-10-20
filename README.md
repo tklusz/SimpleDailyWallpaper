@@ -37,7 +37,7 @@ As of now, this script requires gsettings, which is installed on most Ubuntu-bas
 
 This script is confirmed to work with:
  - Elementary OS (Juno and Loki)
- - Ubuntu 14.04 LTS
+ - Ubuntu 18.10, 14.04 LTS
 
 This script should also be compatible with the following:
  - Ubuntu 18.04 LTS
