@@ -1,17 +1,15 @@
-import pwd, os, subprocess, datetime, re, calendar;
+import pwd 
+import os 
+import subprocess
+import datetime
+import re
+import calendar
 
-global home_directory
 global photo_directory
-
-# User's home directory.
-home_directory = pwd.getpwuid(os.getuid()).pw_dir
-
-# 
+ 
 # If you want to change your wallpaper directory to a specific directory, change the following line.
-# Also, you may remove the lines "global home_directory" and "home_directory = pwd..." above if you change it.
 # Example : photo_directory = "home/myname/Pictures/Wallpapers/Daily"
-#
-photo_directory = home_directory+"/Pictures/Wallpapers/"
+photo_directory = pwd.getpwuid(os.getuid()).pw_dir + "/Pictures/Wallpapers/"
 
 def choosePic():
     """
@@ -23,15 +21,18 @@ def choosePic():
     
     # Creating a new list to store pics that are on or before today.
     filtered_pics = []
+    
     # Retrieves all pics in photo directory.
     all_pics = os.listdir(photo_directory)
+    
     # Gets today's day number e.g. 200 (July 19th)
     today = int(datetime.datetime.now().strftime('%j'))
+    
     # Gets today's year number e.g. 2018
     current_year = int(datetime.datetime.now().strftime('%Y'))
     
-    # If current year is leap year it has 366 days so, in order to mantain the same wallpaper as non leap year
-    # we have to substract one day from the 29th of februry (60 day of the year) onwards.
+    # If this year is leap year it has 366 days. In order to mantain the same wallpaper each day of the year
+    # we have to substract one day from the 29th of February (60 day of the year) onwards.
     if calendar.isleap(current_year) and today > 60:
         today = today - 1
     
@@ -41,26 +42,30 @@ def choosePic():
 
     # Looping through every pic in the directory.
     for pic in all_pics:
-        # Using a regex to remove the file extension of the pic.
+        
+        # Using a regex to remove the file extension of the pic (e.g. .jpg).
         date_number_on_pic = re.sub('\.[a-zA-Z]*','',pic)
 
-        # Calculating the date number on the pic - today's number.
+        # We want to display the wallpaper that's before today's date, and that's closest to today's date.
+        # If the pic number is before today, the day number will be smaller. (e.g. 100 vs 150)
+        # Subtracting will give us a negative number in this case (e.g. 100-150 = -50).
+        # The farther away the pic is from today, the larger the negative number will be (-100 vs -1).
         date_calc = int(date_number_on_pic) - today
-
-        # If the pic number is lower than today's date, it will be negative.
-        # Only negative numbers or 0 will be used.
-        # The pic we will use is the negative number closest to 0 (or 0).
+    
+        # Only negative numbers or 0 will be used, we want to display the closest to 0.
+        # Current max is the the negative number closest to 0. 
+        # It gets updated whenever a closer number is found.
         if  date_calc <=0 and date_calc > current_max:
             current_max = date_calc
             pic_to_use = pic
 
-    # Note that at the beginning of the year until the first number (e.g. 5.png), current_max will be -367.
-    # This is because no pics will make date_calc <=0.
-    # As a result, on a new year, we don't change the background
-    # until we reach the first number (e.g. 5.png).
+    # Note that at the beginning of the year until the first wallpaper in our directory (e.g. 5.png), 
+    # the current_max will be -367 (the default value). This is because no pics will make date_calc <=0.
+    # As a result, on a new year, we don't change the background until we reach 
+    # the first wallpaper for the year.
     if current_max != -367:
         # After we loop through all of the pics,
-        # The date_calc closest to 0 (aka pic_to_use) will be used as our background.
+        # the image number closest to 0 (aka pic_to_use) will be used as our background.
         setWallpaper(pic_to_use)
 
 def setWallpaper(photoname):
@@ -76,10 +81,8 @@ def setWallpaper(photoname):
     # 'file:///home/username/Pictures/Wallpaper/110.png'
     long_file = "'file://" + photo_directory + photoname + "'"
 
-    # This will call the gsettings command to change the background to the new pic.
-    #
+    # This will call the gsettings command to change the background to the new wallpaper.
     # If you are using a different desktop enviornment, you can change the following command:
-    #
     subprocess.call(["gsettings", "set", "org.gnome.desktop.background", "picture-uri", long_file])
 
 
