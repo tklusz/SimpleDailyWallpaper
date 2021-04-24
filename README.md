@@ -17,7 +17,7 @@ Add as many wallpapers to the directory as you want, up to a maximum of 1 per da
 
 > If you want a wallpaper to start showing on the 4th of July, you would name that wallpaper "185", and keep the extension (jpg, png, etc). That wallpaper would continue being shown until you reach another day you have setup. (e.g. 335.jpg will start being displayed on December 1st).
 
-To calculate day numbers, check out [this website.](https://www.epochconverter.com/days/2018)
+To calculate day numbers, check out [this website.](https://www.epochconverter.com/days/2021)
 
 #### Leap Years.
 This script will ignore the 29th of February, and treat it as a second February 28th (day 60). This is to preserve day numbers, for example, Halloween will always be day 304, even on a leap year. As a result, it currently isn't possible to have a unique wallpaper for Februrary 29th.
